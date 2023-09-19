@@ -14,8 +14,8 @@ driver.get("https://rahulshettyacademy.com/AutomationPractice/")
 #1) Count number of rows & columns
 nocolumn=len(driver.find_elements(By.XPATH,"//table[@NAME='courses']/tbody/tr[1]/th"))
 norows=len(driver.find_elements(By.XPATH,"//table[@NAME='courses']/tbody/tr"))
-print(norows)
-print(nocolumn)
+print(norows)#11
+print(nocolumn)#3
 
 #2) Read specifid row & Column data
 d=driver.find_element(By.XPATH,"//table[@NAME='courses']/tbody/tr[6]/td[2]").text
@@ -30,3 +30,11 @@ for r in range(2,norows+1):
     print()
 
 #4)Read Data based on condition(List  Price 25 with name
+for r in range(2,norows+1):
+    instprice=driver.find_element(By.XPATH,"//table[@NAME='courses']/tbody/tr["+str(r)+"]/td[3]").text
+    if instprice=="20":
+        instname=driver.find_element(By.XPATH,"//table[@NAME='courses']/tbody/tr["+str(r)+"]/td[1]").text
+        instcourse = driver.find_element(By.XPATH, "//table[@NAME='courses']/tbody/tr[" + str(r) + "]/td[2]").text
+        instprice = driver.find_element(By.XPATH, "//table[@NAME='courses']/tbody/tr[" + str(r) + "]/td[3]").text
+
+        print(instname,instcourse,instprice)
